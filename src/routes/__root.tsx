@@ -81,10 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Capstone demo: AI-powered loan underwriting for Ujima SACCO." },
       { name: "author", content: "Ujima SACCO" },
       { property: "og:title", content: "Ujima SACCO — AI Loan Approval System" },
-      { property: "og:description", content: "AI-powered loan underwriting capstone demo." },
+      { property: "og:description", content: "Capstone demo: AI-powered loan underwriting for Ujima SACCO." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Ujima SACCO — AI Loan Approval System" },
+      { name: "twitter:description", content: "Capstone demo: AI-powered loan underwriting for Ujima SACCO." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2b32c853-3810-444e-9f34-bc378d8f3409/id-preview-dd2900ef--eb0a37e4-74f2-42e9-93b9-60670a3daa0e.lovable.app-1780671396217.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2b32c853-3810-444e-9f34-bc378d8f3409/id-preview-dd2900ef--eb0a37e4-74f2-42e9-93b9-60670a3daa0e.lovable.app-1780671396217.png" },
     ],
     links: [
       {
