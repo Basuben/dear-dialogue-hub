@@ -16,7 +16,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
           <Link to="/" className="flex items-center gap-2.5 group">
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-navy-gradient text-primary-foreground shadow-elevated">
-              <Landmark className="h-4.5 w-4.5" strokeWidth={2.25} />
+              <Landmark className="h-[18px] w-[18px]" strokeWidth={2.25} />
             </span>
             <span className="flex flex-col leading-none">
               <span className="font-display text-[15px] font-semibold tracking-tight text-foreground">
