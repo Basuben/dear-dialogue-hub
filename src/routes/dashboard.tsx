@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, ChevronDown, CircleAlert, CircleCheck, CircleX, FileText, Trash2 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 import { AppShell } from "@/components/AppShell";
 import { applicationsStore, formatKES, useApplications, type StoredApplication } from "@/lib/store";
@@ -114,8 +114,8 @@ function Dashboard() {
                   const Icon = meta.icon;
                   const open = expanded === a.id;
                   return (
-                    <>
-                      <tr key={a.id} className="border-t border-border transition-colors hover:bg-accent/40">
+                    <Fragment key={a.id}>
+                      <tr className="border-t border-border transition-colors hover:bg-accent/40">
                         <td className="px-4 py-3">
                           <div className="font-medium">{a.application.fullName}</div>
                           <div className="text-xs text-muted-foreground">
@@ -147,13 +147,13 @@ function Dashboard() {
                         </td>
                       </tr>
                       {open && (
-                        <tr key={`${a.id}-d`} className="border-t border-border bg-muted/30">
+                        <tr className="border-t border-border bg-muted/30">
                           <td colSpan={7} className="px-6 py-6">
                             <DetailPanel app={a} />
                           </td>
                         </tr>
                       )}
-                    </>
+                    </Fragment>
                   );
                 })}
               </tbody>
