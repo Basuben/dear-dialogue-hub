@@ -1,12 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Box, Copy, Eye, EyeOff, Home, Ruler } from "lucide-react";
 import { HOUSE, ROOMS, roomArea } from "@/lib/house-spec";
 import houseRef from "@/assets/house-reference.png.asset.json";
-
-const HouseScene = lazy(() =>
-  import("@/components/HouseScene").then((m) => ({ default: m.HouseScene })),
-);
+import { HouseCanvas } from "@/components/HouseCanvas";
 
 export const Route = createFileRoute("/house")({
   head: () => ({
@@ -31,8 +28,6 @@ export const Route = createFileRoute("/house")({
 function HousePage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [showRoof, setShowRoof] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
   const totalArea = useMemo(
     () => ROOMS.reduce((s, r) => s + r.width * r.depth, 0),
@@ -110,17 +105,11 @@ function HousePage() {
             </div>
           </div>
           <div className="h-[460px] w-full lg:h-[620px]">
-            {mounted ? (
-              <Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading 3D model…</div>}>
-                <HouseScene
-                  selectedId={selected}
-                  onSelect={setSelected}
-                  showRoof={showRoof}
-                />
-              </Suspense>
-            ) : (
-              <div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading 3D model…</div>
-            )}
+            <HouseCanvas
+              selectedId={selected}
+              onSelect={setSelected}
+              showRoof={showRoof}
+            />
           </div>
         </section>
 
