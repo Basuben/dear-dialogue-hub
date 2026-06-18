@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { ArrowLeft, Box, Copy, Eye, EyeOff, Home, Ruler } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+import { ArrowLeft, Box, Camera, Copy, Eye, EyeOff, Home, Ruler } from "lucide-react";
 import { HOUSE, ROOMS, roomArea } from "@/lib/house-spec";
 import houseRef from "@/assets/house-reference.png.asset.json";
 import { HouseCanvas } from "@/components/HouseCanvas";
@@ -28,6 +28,23 @@ export const Route = createFileRoute("/house")({
 function HousePage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [showRoof, setShowRoof] = useState(false);
+  const canvasWrapRef = useRef<HTMLDivElement>(null);
+
+  const downloadScreenshot = () => {
+    const canvas = canvasWrapRef.current?.querySelector("canvas");
+    if (!canvas) return;
+    try {
+      const url = canvas.toDataURL("image/png");
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `bungalow-3d-${Date.now()}.png`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (err) {
+      console.error("Screenshot failed", err);
+    }
+  };
 
   const totalArea = useMemo(
     () => ROOMS.reduce((s, r) => s + r.width * r.depth, 0),
@@ -94,7 +111,7 @@ function HousePage() {
               <Box className="h-3.5 w-3.5" /> Interactive model
             </div>
             <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
-              <span>Drag to rotate · scroll to zoom · click a room</span>
+              <span className="hidden sm:inline">Drag to rotate · scroll to zoom · click a room</span>
               <button
                 onClick={() => setShowRoof((v) => !v)}
                 className="inline-flex items-center gap-1 rounded border border-border px-2 py-1 hover:bg-accent"
@@ -102,9 +119,16 @@ function HousePage() {
                 {showRoof ? <EyeOff className="h-3 w-3" /> : <Eye className="h-3 w-3" />}
                 Roof
               </button>
+              <button
+                onClick={downloadScreenshot}
+                className="inline-flex items-center gap-1 rounded border border-border bg-[#0f1b3d] px-2 py-1 text-white hover:bg-[#162a5c]"
+              >
+                <Camera className="h-3 w-3" />
+                Screenshot
+              </button>
             </div>
           </div>
-          <div className="h-[460px] w-full lg:h-[620px]">
+          <div ref={canvasWrapRef} className="h-[460px] w-full lg:h-[620px]">
             <HouseCanvas
               selectedId={selected}
               onSelect={setSelected}

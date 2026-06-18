@@ -81,6 +81,7 @@ export function HouseScene({
     <Canvas
       shadows
       camera={{ position: [14, 12, 14], fov: 38 }}
+      gl={{ preserveDrawingBuffer: true, antialias: true }}
       onPointerMissed={() => onSelect(null)}
       style={{ background: "linear-gradient(180deg, #e9eef6 0%, #f7f8fb 100%)" }}
     >
