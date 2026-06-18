@@ -31,6 +31,8 @@ export const Route = createFileRoute("/house")({
 function HousePage() {
   const [selected, setSelected] = useState<string | null>(null);
   const [showRoof, setShowRoof] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const totalArea = useMemo(
     () => ROOMS.reduce((s, r) => s + r.width * r.depth, 0),
