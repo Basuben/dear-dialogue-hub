@@ -1,12 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Box, Copy, Eye, EyeOff, Home, Ruler } from "lucide-react";
 import { HOUSE, ROOMS, roomArea } from "@/lib/house-spec";
 import houseRef from "@/assets/house-reference.png.asset.json";
-
-const HouseScene = lazy(() =>
-  import("@/components/HouseScene").then((m) => ({ default: m.HouseScene })),
-);
+import { HouseCanvas } from "@/components/HouseCanvas";
 
 export const Route = createFileRoute("/house")({
   head: () => ({
