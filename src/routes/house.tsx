@@ -105,17 +105,11 @@ function HousePage() {
             </div>
           </div>
           <div className="h-[460px] w-full lg:h-[620px]">
-            {mounted ? (
-              <Suspense fallback={<div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading 3D model…</div>}>
-                <HouseScene
-                  selectedId={selected}
-                  onSelect={setSelected}
-                  showRoof={showRoof}
-                />
-              </Suspense>
-            ) : (
-              <div className="flex h-full items-center justify-center text-xs text-muted-foreground">Loading 3D model…</div>
-            )}
+            <HouseCanvas
+              selectedId={selected}
+              onSelect={setSelected}
+              showRoof={showRoof}
+            />
           </div>
         </section>
 
