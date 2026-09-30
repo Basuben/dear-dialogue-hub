@@ -30,7 +30,6 @@ bun run format    # prettier
 | `/apply` | Loan application form with two pre-filled sample applicants |
 | `/dashboard` | Officer queue: filter by decision, read the AI rationale, override the decision |
 | `/analytics` | Approval rate, risk distribution and amounts approved by purpose |
-| `/house` | A separate 3D house specification viewer, unrelated to lending |
 
 ## Where things live
 
