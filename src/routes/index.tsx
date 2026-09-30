@@ -6,10 +6,10 @@ import { AppShell } from "@/components/AppShell";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ujima SACCO — AI Loan Approval System" },
-      { name: "description", content: "Capstone demo: AI-powered credit underwriting for the Ujima Savings & Credit Cooperative." },
-      { property: "og:title", content: "Ujima SACCO — AI Loan Approval" },
-      { property: "og:description", content: "AI-powered credit underwriting demo for a Kenyan SACCO." },
+      { title: "Ujima SACCO: AI Loan Approval System" },
+      { name: "description", content: "Capstone demo: AI-assisted credit underwriting for the Ujima Savings & Credit Cooperative." },
+      { property: "og:title", content: "Ujima SACCO: AI Loan Approval" },
+      { property: "og:description", content: "AI-assisted credit underwriting demo for a Kenyan SACCO." },
     ],
   }),
   component: Landing,
@@ -27,11 +27,11 @@ function Landing() {
               <Sparkles className="h-3.5 w-3.5 text-gold" /> Capstone Project
             </span>
             <h1 className="mt-6 font-display text-4xl font-semibold leading-[1.05] text-balance md:text-6xl">
-              Faster, fairer loan decisions for every <span className="text-gold">SACCO member</span>.
+              Clearer, faster loan decisions for every <span className="text-gold">SACCO member</span>.
             </h1>
             <p className="mt-6 max-w-xl text-base text-primary-foreground/75 md:text-lg">
-              Ujima SACCO uses AI to underwrite loan applications in seconds — scoring risk,
-              suggesting limits, and giving loan officers transparent rationale they can trust.
+              Ujima SACCO uses AI to give each loan application a first-pass review: scoring risk,
+              suggesting limits, and giving loan officers a clear rationale they can check.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
@@ -49,9 +49,9 @@ function Landing() {
             </div>
             <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-primary-foreground/15 pt-6">
               {[
-                { k: "8s", v: "Avg decision time" },
-                { k: "92%", v: "Underwriter agreement" },
-                { k: "3×", v: "Throughput vs manual" },
+                { k: "3", v: "Possible outcomes" },
+                { k: "0 to 100", v: "Credit score" },
+                { k: "1 click", v: "Officer override" },
               ].map((s) => (
                 <div key={s.v}>
                   <dt className="font-display text-3xl font-semibold text-gold">{s.k}</dt>
@@ -64,9 +64,9 @@ function Landing() {
           <div className="relative">
             <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-6 shadow-elevated backdrop-blur">
               <div className="flex items-center justify-between text-xs uppercase tracking-wider text-primary-foreground/65">
-                <span>Live decision preview</span>
-                <span className="inline-flex items-center gap-1.5 text-success">
-                  <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" /> Online
+                <span>Sample decision preview</span>
+                <span className="inline-flex items-center gap-1.5 text-primary-foreground/65">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/50" /> Sample data
                 </span>
               </div>
               <div className="mt-5 rounded-xl bg-primary-foreground/95 p-5 text-foreground">
@@ -114,12 +114,12 @@ function Landing() {
             {
               icon: Brain,
               title: "AI underwrites",
-              body: "Lovable AI scores the application against SACCO policy, computing DTI, risk, and a recommended limit.",
+              body: "An AI model scores the application against SACCO policy, computing DTI, risk, and a recommended limit.",
             },
             {
               icon: ShieldCheck,
               title: "Officer confirms",
-              body: "Loan officers review the rationale, override when needed, and approve with full transparency.",
+              body: "Loan officers review the rationale, override when needed, and make the final call.",
             },
           ].map(({ icon: Icon, title, body }) => (
             <article
@@ -140,17 +140,18 @@ function Landing() {
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="font-display text-3xl font-semibold text-balance">
-              Built for the realities of a Kenyan SACCO.
+              Built around how a Kenyan SACCO lends.
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              Underwriting rules reflect cooperative practice: 3× savings ceiling, guarantor weighting,
-              and forgiveness for thin-file members with strong membership tenure.
+              The underwriting rules follow common cooperative practice: a 3× savings ceiling, a 40%
+              debt-to-income target, a check on default history, and credit for long membership and
+              loans repaid on time.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               {[
-                { icon: Timer, label: "Decisions in under 10 seconds" },
-                { icon: TrendingUp, label: "Portfolio analytics & risk distribution" },
-                { icon: ShieldCheck, label: "Officer override with audit trail" },
+                { icon: Timer, label: "Structured decisions with a plain-language rationale" },
+                { icon: TrendingUp, label: "Portfolio analytics and risk distribution" },
+                { icon: ShieldCheck, label: "Officer override on every application" },
               ].map(({ icon: Icon, label }) => (
                 <li key={label} className="flex items-center gap-3">
                   <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -165,7 +166,7 @@ function Landing() {
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Try the demo</p>
             <h3 className="mt-2 font-display text-2xl font-semibold">Submit a sample application</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              No accounts, no setup. Pre-fill an applicant or enter your own numbers — the AI returns a
+              No accounts, no setup. Pre-fill an applicant or enter your own numbers, and the AI returns a
               full decision and rationale you can inspect in the officer dashboard.
             </p>
             <Link
