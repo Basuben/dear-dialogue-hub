@@ -1,6 +1,6 @@
 # dear-dialogue-hub
 
-Source code for the Ujima SACCO AI Loan Approval capstone. The public write-up is in [ujima-sacco-ai-pride](https://github.com/Basuben/ujima-sacco-ai-pride).
+Source code for the Ujima SACCO AI Loan Approval capstone. The project write-up is in [ujima-sacco-ai-pride](https://github.com/Basuben/ujima-sacco-ai-pride).
 
 ## Run it locally
 
@@ -11,7 +11,7 @@ bun install
 LOVABLE_API_KEY=your_key_here bun run dev
 ```
 
-`LOVABLE_API_KEY` is read on the server only, in `src/lib/ai-gateway.server.ts`. Without it, submitting an application fails with a clear error. Never commit the key.
+`LOVABLE_API_KEY` is read on the server only, in `src/lib/ai-gateway.server.ts`. Without it, submitting an application fails with a clear error. Never commit the key. `.env` files are ignored by git.
 
 Other scripts:
 
@@ -43,6 +43,7 @@ bun run format    # prettier
 ## Things to know
 
 - Applications are kept in `localStorage`, so they stay in one browser and disappear if the site data is cleared.
-- The underwriting policy (3x savings limit, debt-to-income ceiling, default rules) lives in the prompt. It is not enforced by code yet.
-- The figures on the landing page are illustrative, not measured.
+- The underwriting policy (3x savings limit, debt-to-income target, default rules) lives in the prompt. It is not enforced by code yet.
+- The decision card on the landing page is a fixed sample, not a real application.
 - Age is currently passed to the model as an input. See the limitations section of the public README before using this for anything real.
+- All applicant data is made up. Do not enter real member details.
